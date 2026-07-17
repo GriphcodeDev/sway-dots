@@ -1,6 +1,8 @@
 # sway-dots
 My personal minimalistic dotfiles for SwayWM
 
+![screenshot](/screenshots/20260717_024653.png)
+![screenshot](/screenshots/20260717_024826.png)
 
 # Why sway?
 I chose Sway as an alternative to my favorite window manager i3. Sway uses wayland while i3 uses x11. Sway is also i3 config compatible which means you can migrate very easly from i3 to Sway. Do keep in mind that these dotfiles are supposed to be minimalistic and there is no picom compositor effects but be free to use these dots in whatever way you want. 
