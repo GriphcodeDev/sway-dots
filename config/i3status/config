@@ -1,0 +1,28 @@
+general {
+    colors = true
+    interval = 1
+    color_good = "#7c8f6a"
+    color_degraded = "#c1392b"
+    color_bad = "#9e2b25"
+    separator = "  |  "
+}
+
+order += "wireless _first_"
+order += "volume master"
+order += "tztime local"
+
+wireless _first_ {
+    format_up = "wifi: %essid (%quality)"
+    format_down = "wifi: down"
+}
+
+volume master {
+    format = "vol: %volume"
+    format_muted = "vol: muted"
+    device = "default"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}
+

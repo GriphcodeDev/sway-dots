@@ -1,0 +1,130 @@
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+
+
+
+set $bg      #1b1b1b
+set $panel   #2e2e2e
+set $border  #464646
+set $muted   #676767
+set $fg      #e2e2e2
+
+                    
+client.focused             $fg       $fg     $bg    $border    $fg
+client.focused_inactive    $border   $panel  $muted $border    $border
+client.unfocused           $border   $panel  $muted $border    $border
+client.urgent               $muted    $muted  $fg    $muted     $muted
+
+gaps inner 8
+gaps outer 4
+smart_gaps on
+
+
+for_window [app_id="zen"] title_format "  ぜん"
+for_window [app_id="firefox"] title_format "  ふぁいあーふぉっくす"
+for_window [app_id="kitty"] title_format "  きてぃ | %title"
+for_window [app_id="thunar"] title_format "  とぅなー"
+for_window [app_id="spotify_launcher"] title_format "  すぽてぃふぁい | %title"
+for_window [app_id="vesktop"] title_format "  う゛ぇすくとっぷ | %title"
+
+
+bar {
+    status_command i3status
+    font pango:Libertinus Mono 10
+    position top
+    tray_output *
+
+    colors {
+        background #2e2e2e
+        statusline #e2e2e2
+        separator  #464646
+
+        focused_workspace   #e2e2e2 #e2e2e2 #1b1b1b
+        active_workspace    #676767 #2e2e2e #e2e2e2
+        inactive_workspace  #2e2e2e #2e2e2e #676767
+        urgent_workspace    #676767 #676767 #e2e2e2
+    }
+}
+
+
+set $mod Mod4
+
+set $term kitty
+set $menu rofi -show drun
+
+
+
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+f fullscreen toggle
+bindsym $mod+n exec swaync-client -t -sw
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s exec bash -c 'f=~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png; grim -g "$(slurp)" "$f" && wl-copy < "$f"'
+
+set $ws1 "一"
+set $ws2 "二"
+set $ws3 "三"
+set $ws4 "四"
+set $ws5 "五"
+set $ws6 "六"
+set $ws7 "七"
+set $ws8 "八"
+set $ws9 "九"
+set $ws10 "十"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+shift+1 move container to workspace $ws1
+bindsym $mod+shift+2 move container to workspace $ws2
+bindsym $mod+shift+3 move container to workspace $ws3
+bindsym $mod+shift+4 move container to workspace $ws4
+bindsym $mod+shift+5 move container to workspace $ws5
+bindsym $mod+shift+6 move container to workspace $ws6
+bindsym $mod+shift+7 move container to workspace $ws7
+bindsym $mod+shift+8 move container to workspace $ws8
+bindsym $mod+shift+9 move container to workspace $ws9
+bindsym $mod+shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+c reload
+
+bindsym $mod+shift+w exec waypaper
+
+bindsym $mod+Shift+p exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+floating_modifier $mod normal
+
+
+output "DVI-D-1" mode 1920x1080@144.001Hz
+
+input * {
+    xkb_layout se
+}
+
+

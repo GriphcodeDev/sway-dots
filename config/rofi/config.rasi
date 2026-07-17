@@ -1,0 +1,57 @@
+* {
+    bg:      #1b1b1b;
+    bg-alt:  #2e2e2e;
+    fg:      #e2e2e2;
+    fg-muted: #676767;
+    border:  #464646;
+
+    background-color: @bg;
+    text-color:        @fg;
+    font: "Libertinus Mono 11";
+    show-icons: true;
+    
+}
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border;
+    border-radius: 0px;
+    width: 480px;
+}
+
+mainbox {
+    background-color: @bg;
+    padding: 8px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    text-color: @fg;
+    padding: 8px;
+    border: 1px;
+    border-color: @border;
+}
+
+listview {
+    background-color: @bg;
+    lines: 8;
+    spacing: 2px;
+}
+
+element {
+    background-color: @bg;
+    text-color: @fg-muted;
+    padding: 6px;
+}
+
+element selected {
+    background-color: @fg;
+    text-color: @bg;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
