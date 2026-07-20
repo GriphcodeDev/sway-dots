@@ -10,7 +10,7 @@ I chose Sway as an alternative to my favorite window manager i3. Sway uses wayla
 # Install 
 
 ```
-sudo pacman -S sway wl-clipboard fastfetch kitty rofi i3status 
+sudo pacman -S sway wl-clipboard fastfetch kitty fuzzel i3status 
 ```
 
 ### fonts
